@@ -60,6 +60,7 @@
             <artifactId>springdoc-openapi-data-rest</artifactId>
             <version>1.5.4</version>
         </dependency>
+
         <!-- Security and JWT -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -107,8 +108,14 @@
         <!-- MercadoPago SDK -->
         <dependency>
             <groupId>com.mercadopago</groupId>
-            <artifactId>dx-java</artifactId>
-            <version>1.0.33</version>
+            <artifactId>sdk-java</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+        <!-- Thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>2.4.2</version>
         </dependency>
     </dependencies>
 

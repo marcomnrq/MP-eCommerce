@@ -32,9 +32,8 @@ public class AuthenticationController {
     }
 
     @PostMapping("/refresh-token")
-    public AuthenticationResponse refreshToken(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest, Principal principal){
-        String email = principal.getName();
-        return authenticationService.refreshToken(email, refreshTokenRequest);
+    public AuthenticationResponse refreshToken(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest){
+        return authenticationService.refreshToken(refreshTokenRequest);
     }
 
     @PostMapping("/sign-out")

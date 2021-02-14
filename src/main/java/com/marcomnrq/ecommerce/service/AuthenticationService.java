@@ -1,5 +1,6 @@
 package com.marcomnrq.ecommerce.service;
 
+import com.marcomnrq.ecommerce.domain.model.Role;
 import com.marcomnrq.ecommerce.domain.model.User;
 import com.marcomnrq.ecommerce.domain.repository.RoleRepository;
 import com.marcomnrq.ecommerce.domain.repository.UserRepository;
@@ -38,6 +39,7 @@ public class AuthenticationService {
 
     @Transactional
     public void signUp(RegistrationRequest registrationRequest) {
+
         // Creating a new user based of registration dto
         User user = new User();
         user.setEmail(registrationRequest.getEmail());
@@ -46,6 +48,7 @@ public class AuthenticationService {
         user.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
         user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
         user.setEnabled(true);
+
 
         // Saving the new user to the database
         userRepository.save(user);
@@ -58,25 +61,25 @@ public class AuthenticationService {
         String token = jwtProvider.generateToken(authenticate);
         return new AuthenticationResponse(
                 token,
-                refreshTokenService.generateRefreshToken().getToken(),
+                refreshTokenService.generateRefreshToken(loginRequest.getEmail()).getToken(),
                 Instant.now().plusMillis(jwtProvider.getJwtExpirationInMillis()),
                 loginRequest.getEmail()
         );
     }
 
-    public AuthenticationResponse refreshToken(String email, RefreshTokenRequest refreshTokenRequest){
+    public AuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest){
         // Refresh the token
-        refreshTokenService.validateRefreshToken(refreshTokenRequest.getRefreshToken());
-        String token = jwtProvider.generateTokenWithEmail(email);
-
+        refreshTokenService.validateRefreshToken(refreshTokenRequest);
+        String token = jwtProvider.generateTokenWithEmail(refreshTokenRequest.getEmail());
         return new AuthenticationResponse(
                 token,
                 refreshTokenRequest.getRefreshToken(),
                 Instant.now().plusMillis(jwtProvider.getJwtExpirationInMillis()),
-                email);
+                refreshTokenRequest.getEmail());
     }
 
     public void signOut(RefreshTokenRequest refreshTokenRequest) {
+        refreshTokenService.validateRefreshToken(refreshTokenRequest);
         refreshTokenService.deleteRefreshToken(refreshTokenRequest.getRefreshToken());
     }
 

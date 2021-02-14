@@ -26,7 +26,7 @@ public class UserDetailsService implements org.springframework.security.core.use
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String email) {
         Optional<User> userOptional = userRepository.findByEmail(email);
-        User user = userOptional.orElseThrow(() -> new CustomException("User not found with username: " + email));
+        User user = userOptional.orElseThrow(() -> new CustomException("User not found with email: " + email));
 
         return new
                 org.springframework.security
