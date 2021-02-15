@@ -23,6 +23,7 @@ public class PaymentController {
         return paymentService.generatePreference();
     }
 
+    @CrossOrigin(origins = "**")
     @PostMapping("/notifications")
     public ResponseEntity paymentNotification(@RequestParam String parameters, @RequestBody String body){
         paymentService.paymentNotification(parameters, body);
