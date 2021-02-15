@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.*;
 public class OrderController {
     private final OrderService orderService;
 
+    /*
     @PostMapping
     public MercadopagoResource createOrder(){
         return orderService.createOrder();
     }
+
+     */
 
     @PostMapping("/notifications")
     public ResponseEntity paymentNotification(@RequestBody IpnResource ipnResource){

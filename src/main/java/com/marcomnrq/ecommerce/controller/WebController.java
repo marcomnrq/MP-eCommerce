@@ -5,7 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class WebController {
-    @GetMapping("/")
+
+    @GetMapping(    { "/"
+                    , "/carrito"
+                    , "/ordenes"
+    })
     public String index() {
         return "index";
     }

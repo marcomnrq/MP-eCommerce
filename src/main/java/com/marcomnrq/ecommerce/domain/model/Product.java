@@ -20,6 +20,8 @@ public class Product extends AuditModel {
 
     private Float price;
 
+    private String description;
+
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "products_categories",

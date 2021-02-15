@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Configuration;
 public class OpenApiConfiguration {
     @Bean(name = "eCommerceOpenApi")
     public OpenAPI eCommerceOpenApi() {
-        return new OpenAPI().info(
+        return new OpenAPI()
+                .info(
                 new Info()
                         .title("MP eCommerce Application API")
                         .description("API implemented with Spring Boot RESTful service and documented using springdoc-openapi and OpenAPI 3.0")
