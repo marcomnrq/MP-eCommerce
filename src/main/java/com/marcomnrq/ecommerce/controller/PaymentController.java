@@ -9,6 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @RestController
@@ -25,8 +27,8 @@ public class PaymentController {
 
     @CrossOrigin(origins = "**")
     @PostMapping("/notifications")
-    public ResponseEntity paymentNotification(@RequestParam String parameters, @RequestBody String body){
-        paymentService.paymentNotification(parameters, body);
+    public ResponseEntity paymentNotification(HttpServletRequest parameters, @RequestBody String body){
+        paymentService.paymentNotification(parameters.getQueryString(), body);
         return ResponseEntity.ok(200);
     }
 
