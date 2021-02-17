@@ -32,6 +32,7 @@ public class PaymentService {
             Item item = new Item();
             item.setId("1234");
             item.setTitle("Manta para mascotas");
+            item.setPictureUrl("https://picsum.photos/id/1062/300/300");
             item.setQuantity(1);
             item.setDescription("Increíble manta para engreir a tu mascota con tacto de seda fino y de gran calidad");
             item.setCurrencyId("PEN");
