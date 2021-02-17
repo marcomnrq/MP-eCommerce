@@ -31,9 +31,9 @@ public class PaymentService {
             // Appending the items
             Item item = new Item();
             item.setId("1234");
-            item.setTitle("Producto ejemplo");
+            item.setTitle("Manta para mascotas");
             item.setQuantity(1);
-            item.setDescription("Dispositivo movil de tienda eCommerce");
+            item.setDescription("Increíble manta para engreir a tu mascota con tacto de seda fino y de gran calidad");
             item.setCurrencyId("PEN");
             item.setUnitPrice((float) 14.99);
             preference.appendItem(item);
