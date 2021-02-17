@@ -9,6 +9,7 @@ public class WebController {
     @GetMapping(    { "/"
                     , "/carrito"
                     , "/ordenes"
+                    , "/payment"
     })
     public String index() {
         return "index";
