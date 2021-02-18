@@ -31,12 +31,12 @@ public class PaymentService {
             // Appending the items
             Item item = new Item();
             item.setId("1234");
-            item.setTitle("Manta para mascotas");
-            item.setPictureUrl("https://picsum.photos/id/1062/300/300");
+            item.setTitle("Apple iPhone 5S");
+            item.setPictureUrl("https://i.blogs.es/3ade97/iphone-5-4/1366_2000.jpg");
             item.setQuantity(1);
-            item.setDescription("Increíble manta para engreir a tu mascota con tacto de seda fino y de gran calidad");
+            item.setDescription("Dispositivo móvil de Tienda e-commerce");
             item.setCurrencyId("PEN");
-            item.setUnitPrice((float) 14.99);
+            item.setUnitPrice((float) 149.99);
             preference.appendItem(item);
             // Payer information
             Payer payer = new Payer();
